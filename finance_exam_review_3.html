@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>金融市場常識 · 考前複習</title>
+<style>
+  :root{
+    --paper:#F4F1E8;
+    --paper-line:#DCD5C2;
+    --ink:#242220;
+    --ink-soft:#6b6558;
+    --red:#B6392F;
+    --red-soft:#e7d9d3;
+    --pink:#E8447A;
+    --pink-bg:#fde6ee;
+    --blue:#2A6DA8;
+    --blue-bg:#e2eef8;
+    --teal:#2E8B6F;
+    --teal-bg:#e2f2ec;
+    --green:#2E6B4F;
+    --green-bg:#e3efe7;
+    --card:#FBFAF5;
+    --shadow: 0 1px 0 rgba(36,34,32,0.06);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    background-image: linear-gradient(var(--paper-line) 1px, transparent 1px);
+    background-size: 100% 34px;
+    background-position: 0 130px;
+    color:var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:64px;
+    min-height:100vh;
+  }
+  body::before{
+    content:"";
+    position:fixed; top:0; bottom:0; left:34px; width:1.5px;
+    background:var(--red); opacity:.35; z-index:0;
+  }
+  header{
+    position:sticky; top:0; z-index:20;
+    background:var(--paper);
+    padding:16px 18px 10px 46px;
+    border-bottom:1px solid var(--paper-line);
+  }
+  header .eyebrow{ font-size:11px; letter-spacing:.18em; color:var(--red); font-weight:700; text-transform:uppercase; }
+  header h1{ margin:2px 0 2px; font-size:21px; font-weight:800; letter-spacing:.01em; }
+  header p.sub{ margin:0; font-size:12px; color:var(--ink-soft); }
+  .legend{ display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; }
+  .legend span{ font-size:10px; padding:2px 7px; border-radius:6px; font-weight:700; white-space:nowrap; }
+  .lg-relate{ background:#EAE6DA; color:#5b5646; }
+  .lg-case{ background:var(--blue-bg); color:var(--blue); }
+  .lg-life{ background:var(--teal-bg); color:var(--teal); }
+  .lg-tip{ background:var(--pink-bg); color:#7a2851; }
+  .search-row{ display:flex; gap:8px; margin-top:10px; }
+  .search-row input{
+    flex:1; border:1px solid var(--paper-line); background:var(--card);
+    border-radius:10px; padding:9px 12px; font-size:14px; color:var(--ink); outline:none;
+  }
+  .search-row input:focus{ border-color:var(--red); }
+  .search-row button{
+    border:1px solid var(--paper-line); background:var(--card);
+    border-radius:10px; padding:9px 12px; font-size:12.5px; color:var(--ink-soft); white-space:nowrap;
+  }
+  .search-row button:active{ background:var(--red-soft); }
+  nav.chips{ display:flex; gap:6px; overflow-x:auto; padding:10px 18px 12px 46px; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+  nav.chips::-webkit-scrollbar{display:none;}
+  nav.chips a{
+    flex:0 0 auto; font-size:12px; color:var(--ink); background:var(--card);
+    border:1px solid var(--paper-line); padding:6px 11px; border-radius:999px; text-decoration:none; white-space:nowrap;
+  }
+  main{ padding:14px 14px 0 46px; position:relative; z-index:1; }
+  html{ scroll-behavior:smooth; }
+  details.chapter, section.pinned{ scroll-margin-top: 175px; }
+  details.chapter{
+    background:var(--card); border:1px solid var(--paper-line); border-radius:14px;
+    margin-bottom:12px; box-shadow:var(--shadow); overflow:hidden;
+  }
+  details.chapter[open]{ border-color:#cfc6ad; }
+  details.chapter > summary{
+    list-style:none; display:flex; align-items:center; gap:10px;
+    padding:14px 14px; cursor:pointer; font-weight:700; font-size:15.5px;
+  }
+  details.chapter > summary::-webkit-details-marker{ display:none; }
+  .num{ flex:0 0 auto; font-size:11px; font-weight:800; color:var(--red); background:var(--red-soft); border-radius:6px; padding:2px 7px; letter-spacing:.03em; }
+  .chev{ margin-left:auto; color:var(--ink-soft); font-size:13px; transition:transform .15s ease; }
+  details.chapter[open] .chev{ transform:rotate(90deg); }
+  .chapter-body{ padding:0 16px 16px; }
+  .group-head{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px; margin:14px 0 6px; }
+  .group-head h4{ font-size:12.5px; color:var(--ink-soft); font-weight:700; margin:0; letter-spacing:.02em; }
+  .relate{ font-size:10.5px; color:#6b6548; background:#EAE6DA; padding:2px 7px; border-radius:999px; white-space:nowrap; }
+  .entry{ font-size:14.5px; line-height:1.65; margin:8px 0; padding-left:14px; position:relative; }
+  .entry::before{ content:"·"; position:absolute; left:0; top:0; color:var(--red); font-weight:900; }
+  .entry b, .entry strong{ font-weight:800; }
+  .tip{
+    display:block; margin:6px 0 10px 14px; font-size:13.5px; line-height:1.6; color:#7a2851;
+    background:var(--pink-bg); border-left:3px solid var(--pink); padding:6px 10px; border-radius:0 8px 8px 0;
+  }
+  .case{
+    margin:8px 0 10px 14px; border-radius:0 10px 10px 0; border-left:3px solid var(--blue);
+    background:var(--blue-bg); padding:8px 12px;
+  }
+  .case .label{ font-size:10.5px; font-weight:800; color:var(--blue); letter-spacing:.02em; margin-bottom:2px; }
+  .case p{ margin:0; font-size:13.5px; line-height:1.6; color:#1f4a6b; }
+  .life{
+    margin:8px 0 10px 14px; border-radius:0 10px 10px 0; border-left:3px solid var(--teal);
+    background:var(--teal-bg); padding:8px 12px;
+  }
+  .life .label{ font-size:10.5px; font-weight:800; color:var(--teal); letter-spacing:.02em; margin-bottom:2px; }
+  .life p{ margin:0; font-size:13.5px; line-height:1.6; color:#1f5c46; }
+  table.cmp{ width:100%; border-collapse:collapse; margin:10px 0 14px 14px; font-size:13px; background:#fff; border-radius:8px; overflow:hidden; border:1px solid var(--paper-line); }
+  table.cmp th, table.cmp td{ padding:8px 8px; border-bottom:1px solid var(--paper-line); text-align:left; }
+  table.cmp th{ background:#efe9d8; font-weight:700; }
+  table.cmp tr:last-child td{ border-bottom:none; }
+  .tblwrap{ overflow-x:auto; }
+  section.pinned{ background:var(--green-bg); border:1px solid #bcd8c6; border-radius:14px; padding:16px 16px 8px; margin:16px 0 20px; }
+  section.pinned .num{ background:#d3e7da; color:var(--green); }
+  section.pinned h2{ font-size:16px; margin:8px 0 4px; display:flex; align-items:center; gap:8px; }
+  section.pinned .entry::before{ color:var(--green); }
+  section.pinned .entry{ font-size:14px; }
+  section.pinned .group-head h4{ color:#3f7a5c; }
+  footer{ text-align:center; padding:20px 20px 40px 46px; font-size:11.5px; color:var(--ink-soft); }
+  .fab{ position:fixed; right:16px; bottom:20px; z-index:30; display:flex; flex-direction:column; gap:8px; }
+  .fab button{ width:44px; height:44px; border-radius:50%; background:var(--ink); color:#fff; border:none; font-size:18px; box-shadow:0 4px 10px rgba(0,0,0,.2); }
+  .fab button:active{ transform:scale(.93); }
+  .no-match{ text-align:center; color:var(--ink-soft); font-size:13px; padding:30px 0; display:none; }
+  @media (min-width:720px){
+    main{ max-width:720px; margin:0 auto; padding-left:46px; }
+    header, nav.chips{ padding-left:46px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Exam Notes · 考前複習</div>
+  <h1>金融市場常識</h1>
+  <p class="sub">15 章 · 離線可讀 · 搜尋任何名詞</p>
+  <div class="legend">
+    <span class="lg-relate">🔗 關聯</span>
+    <span class="lg-case">📰 真實案例</span>
+    <span class="lg-life">🙋 生活情境</span>
+    <span class="lg-tip">🧠 記憶法</span>
+  </div>
+  <div class="search-row">
+    <input id="searchInput" type="text" placeholder="搜尋名詞、記憶法…" autocomplete="off">
+    <button id="toggleAllBtn">全部展開</button>
+  </div>
+</header>
+
+<nav class="chips" id="chipNav">
+  <a href="#c1">① 市場分類</a>
+  <a href="#c2">② 機關角色</a>
+  <a href="#c3">③ 法規期限</a>
+  <a href="#c4">④ 股票交易</a>
+  <a href="#c5">⑤ 債券</a>
+  <a href="#c6">⑥ 基金</a>
+  <a href="#c7">⑦ 期貨</a>
+  <a href="#c8">⑧ 選擇權</a>
+  <a href="#c9">⑨ 銀行</a>
+  <a href="#c10">⑩ 外匯</a>
+  <a href="#c11">⑪ 風險</a>
+  <a href="#c12">⑫ 衍生商品</a>
+  <a href="#c13">⑬ ESG</a>
+  <a href="#c14">⑭ 信託</a>
+  <a href="#c15">⑮ 風險保險</a>
+  <a href="#quick">🧠 速記</a>
+</nav>
+
+<main id="main">
+
+<div class="no-match" id="noMatch">找不到符合的內容,換個關鍵字試試</div>
+
+<!-- 1 -->
+<details class="chapter" id="c1" open>
+  <summary><span class="num">01</span>金融市場分類<span class="chev">▸</span></summary>
+  <div class="chapter-body">
+
+    <div class="group-head"><h4>依「借錢時間」分</h4><span class="relate">🔗 對照⑨銀行(短期票券哪裡買)</span></div>
+    <div class="entry"><b>貨幣市場(短期)</b>:一年以內。</div>
+    <div class="tip">🧠 買票時效短 👉 票券、商業本票、國庫券。</div>
+    <div class="entry"><b>資本市場(長期)</b>:一年以上。</div>
+    <div class="tip">🧠 累積資本要很久 👉 股票、債券。</div>
+
+    <div class="group-head"><h4>依「股票生命週期」分</h4><span class="relate">🔗 對照④股票交易(次級市場怎麼玩)</span></div>
+    <div class="entry"><b>初級市場(發行市場)</b>:公司第一次印股票換錢。</div>
+    <div class="entry"><b>次級市場(流通市場)</b>:股民互相買賣二手股票。</div>
+    <div class="case">
+      <div class="label">📰 真實案例</div>
+      <p>公司上市前的首次公開發行(IPO)=初級市場;上市後你在證券 App 買賣它=次級市場。</p>
+    </div>
+    <div class="tip">🧠 剛出生(現金增資,公司真的拿到錢)👉 初級;在外流浪(公司拿不到半毛錢)👉 次級。</div>
+
+    <div class="group-head"><h4>依「交易場所」分(次級市場)</h4></div>
+    <div class="entry"><b>集中市場</b>:大家統一在大系統配對。</div>
+    <div class="tip">🧠 大廳結帳 👉 證券交易所(上市股票)。</div>
+    <div class="entry"><b>店頭市場(OTC)</b>:沒有統一地點,直接找老闆議價。</div>
+    <div class="tip">🧠 店鋪老頭喊價 👉 分散的交易商報價(上櫃、公債)。</div>
+    <div class="entry"><b>興櫃市場</b>:未上市未上櫃股票合法流通的地方。</div>
+    <div class="entry"><b>場外交易</b>:不在集中市場撮合的才算。</div>
+    <div class="tip">🧠 一般/鉅額/盤後交易「都在場內」,不是場外。</div>
+
+  </div>
+</details>
+
+<!-- 2 -->
+<details class="chapter" id="c2">
+  <summary><span class="num">02</span>金融機關與角色<span class="chev">▸</span></summary>
+  <div class="chapter-body">
+    <div class="entry"><b>金管會</b>:金融消費糾紛的最大長官(管保險、股票、銀行)。</div>
+    <div class="tip">🧠 也是「期貨市場主管機關」。</div>
+    <div class="entry"><b>證券金融公司</b>:股票市場的當鋪。</div>
+    <div class="tip">🧠 名字有「金」就是借貸 👉 授信、轉融通。</div>
+    <div class="entry"><b>投保中心</b>:免費的散戶復仇聯盟。</div>
+    <div class="life">
+      <div class="label">🙋 生活情境</div>
+      <p>被理專詐騙或有證券糾紛,可打 165 或找金管會/投保中心申訴。</p>
+    </div>
+    <div class="entry"><b>期貨商</b>:買賣期貨的唯一合法入口。</div>
+    <div class="tip">🧠 資訊公司只是電視台 👉 只能看盤,不能下單。</div>
+    <div class="entry"><b>董事會</b>:公司最大的扛霸子。</div>
+    <div class="tip">🧠 出大包找最大尾 👉 對內部控制負最終責任。</div>
+    <div class="entry"><b>結算所(期貨)</b>:每筆交易的中間人。</div>
+    <div class="tip">🧠 介入每筆交易 👉「沒有對手信用風險」;負責每日結算,但「監視不法交易」不是它的事。</div>
+    <div class="entry"><b>綜合證券商</b>:認購權證的發行人。</div>
+  </div>
+</details>
+
+<!-- 3 -->
+<details class="chapter" id="c3">
+  <summary><span class="num">03</span>重要法規與期限<span class="chev">▸</span></summary>
+  <div class="chapter-body">
+
+    <div class="group-head"><h4>公告與開會</h4><span class="relate">🔗 對照④股票交易(除權息、股東會)</span></div>
+    <div class="entry">地點:統一貼在 <b>公開資訊觀測站</b>。</div>
+    <div class="entry">交財報:過完年 <b>3 個月內</b>(3/31 前算完帳)。</div>
+    <div class="entry">股東會:過完年 <b>6 個月內</b>(6/30 前要開完)。</div>
+    <div class="life">
+      <div class="label">🙋 生活情境</div>
+      <p>查某公司股東會通知,日期一定卡在 6/30 前,這就是法規要求。</p>
+    </div>
+
+    <div class="group-head"><h4>交易規則(股票)</h4></div>
+    <div class="entry"><b>漲跌幅</b>:以「開盤競價基準」上下 <b>10%</b>。</div>
+    <div class="tip">🧠 陷阱①基準不是開盤價;②是 10% 不是 5%。</div>
+    <div class="entry"><b>鉅額交易</b>:單一證券 <b>500 交易單位</b>以上。</div>
+    <div class="entry"><b>零股買賣</b>:<b>999 股以下</b>。</div>
+    <div class="entry"><b>上櫃推薦</b>:需 <b>2 家</b>以上證券商書面推薦。</div>
+    <div class="tip">🧠 上櫃=兩家。</div>
+    <div class="entry"><b>上市設立年限</b>:須依公司法設立登記屆滿 <b>3 年</b>。</div>
+
+    <div class="group-head"><h4>內線交易</h4></div>
+    <div class="entry">內部人在重大消息公開後,須滿 <b>18 小時</b>才能買賣。</div>
+    <div class="tip">🧠 給市場 18 小時消化。</div>
+
+    <div class="group-head"><h4>消費者與投資人保護</h4></div>
+    <div class="entry"><b>存款保險</b>:銀行倒閉,最高賠 <b>300 萬</b>台幣。</div>
+    <div class="tip">🧠 賠一台進口車。</div>
+    <div class="entry"><b>壽險撤回權</b>:收到保單隔天起算,<b>10 天</b>猶豫期。</div>
+    <div class="tip">🧠 網購 7 天 + 保險加碼 3 天。</div>
+    <div class="entry"><b>保證人權利</b>:房貸有擔保品,銀行<b>不得</b>逼你找連帶保證人;主債務人放棄抗辯,保證人<b>仍可</b>獨立拒絕。</div>
+    <div class="entry"><b>證券保管</b>:一定要<b>主管 + 經辦雙重確認</b>,不能一人簽發。</div>
+
+    <div class="group-head"><h4>基本單位換算</h4></div>
+    <div class="entry"><b>1 個基本點(bp)= 0.01%</b>。</div>
+    <div class="tip">🧠 100 bp = 1%。</div>
+    <div class="entry"><b>一碼 = 0.25%</b>。</div>
+
+  </div>
+</details>
+
+<!-- 4 -->
+<details class="chapter" id="c4">
+  <summary><span class="num">04</span>股票市場與交易制度<span class="chev">▸</span></summary>
+  <div class="chapter-body">
+
+    <div class="group-head"><h4>交易成本</h4><span class="relate">🔗 對照⑤債券(交易稅差異)</span></div>
+    <div class="entry">買進:只付<b>手續費</b>。</div>
+    <div class="entry">賣出:付<b>手續費 + 證券交易稅</b>(千分之三)。</div>
+    <div class="tip">🧠 手續費買賣都收,交易稅只在賣出時收。</div>
+    <div class="entry">債券:賣出<b>免證交稅</b>。</div>
+    <div class="life">
+      <div class="label">🙋 生活情境</div>
+      <p>手機證券 App 下單,畫面顯示的手續費/交易稅就是這裡教的。</p>
+    </div>
+
+    <div class="group-head"><h4>融資 vs 融券</h4></div>
+    <div class="entry"><b>融資</b>:借錢買股(賭漲)。</div>
+    <div class="entry"><b>融券</b>:借股票先賣(賭跌)。成本=交易稅 + 交易手續費 + 融券手續費。</div>
+    <div class="tip">🧠 「融券利息」不算成本(反而可能收保證金利息)。</div>
+
+    <div class="group-head"><h4>除權除息(超重要計算)</h4><span class="relate">🔗 對照③法規(股東會、公告期限)</span></div>
+    <div class="entry"><b>面額固定 10 元</b>:台灣股票股利都用面額算。</div>
+    <div class="entry"><b>配股率</b> = 每股股票股利 ÷ 10。</div>
+    <div class="entry"><b>除權參考價</b> = 除權前收盤價 ÷ (1 + 配股率)。</div>
+    <div class="case">
+      <div class="label">📰 真實案例</div>
+      <p>每年 7-9 月是除權息旺季,新聞常報導「除權參考價」怎麼算,就是這條公式。</p>
+    </div>
+    <div class="tip">🧠 例:收盤 60、配 2 元股票股利 → 配股率 0.2 → 60 ÷ 1.2 = 50。看到「股票股利 X 元」先除以 10。</div>
+
+    <div class="group-head"><h4>認購權證</h4></div>
+    <div class="entry">發行人=綜合證券商。發行者角色=<b>賣出買權(Sell Call)</b>。</div>
+    <div class="tip">🧠 別人買 Call,券商就是賣 Call 那一邊。</div>
+
+  </div>
+</details>
+
+<!-- 5 -->
+<details class="chapter" id="c5">
+  <summary><span class="num">05</span>債券(利率反向是核心)<span class="chev">▸</span></summary>
+  <div class="chapter-body">
+
+    <div class="group-head"><h4>鐵律</h4><span class="relate">🔗 對照⑦期貨(利率如何影響價格)</span></div>
+    <div class="entry"><b>利率漲 → 債券價格跌</b>(反向關係)。</div>
+    <div class="case">
+      <div class="label">📰 真實案例</div>
+      <p>近年全球升息循環,債券型基金淨值明顯下滑,就是「利率漲、債券跌」的真實寫照。</p>
+    </div>
+    <div class="entry"><b>到期期間愈長 → 對利率愈敏感 → 利率風險愈大</b>。</div>
+    <div class="tip">🧠 綁愈久、震愈大。長期公債利率風險 > 短期票券。</div>
+    <div class="entry"><b>票面利率愈高 → 價格對利率愈不敏感</b>(變動小)。</div>
+    <div class="tip">🧠 早期領回多、包袱輕。</div>
+
+    <div class="group-head"><h4>價格 vs 殖利率</h4></div>
+    <div class="entry">溢價買(買比面額貴)→ <b>殖利率 &lt; 票面利率</b>。</div>
+    <div class="tip">🧠 買貴了報酬被稀釋。</div>
+    <div class="entry">債券到期時,價格會趨近於<b>面額</b>。</div>
+
+    <div class="group-head"><h4>零息債券(Zero-Coupon)</h4></div>
+    <div class="entry">中間不配息,折價發行、到期按面額贖回。</div>
+    <div class="tip">🧠 不給糖就得打折賣 👉 市價 &lt; 面額。</div>
+
+    <div class="group-head"><h4>信用評等</h4></div>
+    <div class="entry"><b>S&amp;P:BBB(含)以上 = 投資等級</b>;BB 以下 = 投機/垃圾等級。</div>
+    <div class="tip">🧠 要三個 B。</div>
+    <div class="entry">評等下降 = 違約風險上升 + 債券價格下跌。</div>
+    <div class="entry"><b>垃圾債券</b>:高風險、高殖利率。</div>
+    <div class="tip">🧠 沒人要就用高利率賄賂。</div>
+
+    <div class="group-head"><h4>債券種類</h4></div>
+    <div class="entry"><b>外國債券</b>:A 國發行人在 B 國、用「B 國貨幣」發。</div>
+    <div class="entry"><b>歐洲債券(Euro Bond)</b>:A 國發行人在 B 國、「不用 B 國貨幣」發 👉 條件較有彈性。</div>
+    <div class="entry"><b>登錄公債</b> = 無實體公債(登記在電腦裡,沒紙本)。</div>
+
+  </div>
+</details>
+
+<!-- 6 -->
+<details class="chapter" id="c6">
+  <summary><span class="num">06</span>基金與投資組合<span class="chev">▸</span></summary>
+  <div class="chapter-body">
+
+    <div class="group-head"><h4>開放型 vs 封閉型(最愛考)</h4><span class="relate">🔗 對照⑫金融商品</span></div>
+    <div class="tblwrap">
+    <table class="cmp">
+      <tr><th></th><th>封閉型</th><th>開放型</th></tr>
+      <tr><td>發行單位數</td><td>固定</td><td>浮動(非固定)</td></tr>
+      <tr><td>買賣價格</td><td>市場供需(會折溢價)</td><td>依淨值</td></tr>
+      <tr><td>交易地點</td><td>集中市場掛牌</td><td>基金公司申贖(ETF例外)</td></tr>
+      <tr><td>贖回壓力</td><td>沒有</td><td>有</td></tr>
+    </table>
+    </div>
+    <div class="case">
+      <div class="label">📰 真實對照</div>
+      <p><b>開放型</b>=00919、00878 這類 ETF(依淨值申贖,規模浮動)<br>
+      <b>封閉型</b>=REITs 如富邦 R1(像股票掛牌買賣,常有折溢價)</p>
+    </div>
+    <div class="tip">🧠 台灣「封閉型 &lt; 開放型」;依淨值=開放型、看市場價=封閉型。</div>
+
+    <div class="group-head"><h4>主動 vs 被動</h4><span class="relate">🔗 對照⑦期貨(避險策略的積極/消極)</span></div>
+    <div class="entry"><b>主動式(積極式)</b>:研究選股 + 掌握增減持股時機,想「打敗大盤」。</div>
+    <div class="entry"><b>被動式(消極式)</b>:複製指數(指數型基金/ETF),只求「貼近大盤」。</div>
+    <div class="life">
+      <div class="label">🙋 生活情境</div>
+      <p>每月扣款買 0050=被動式(複製指數);挑主動型基金讓經理人選股=主動式。</p>
+    </div>
+    <div class="tip">🧠 退撫基金採消極式 👉 就是買指數型基金;積極式可委託國內、國外專業經理人。</div>
+
+    <div class="group-head"><h4>投資人屬性配對(常考)</h4><span class="relate">🔗 對照⑨銀行(老年人與定存)</span></div>
+    <div class="entry"><b>積極型</b> 👉 成長型股票基金、低本益比股票、小型股。</div>
+    <div class="entry"><b>保守型</b> 👉 價值型股票基金、保本型基金、定存。</div>
+    <div class="entry"><b>老年人</b> 👉 保本型基金 / 定存。</div>
+    <div class="tip">🧠 積極選成長、保守選價值,年紀大不冒險。</div>
+
+    <div class="group-head"><h4>共同基金 vs 對沖(避險)基金</h4><span class="relate">🔗 對照⑦期貨/⑧選擇權</span></div>
+    <div class="entry"><b>共同基金</b>:追<b>相對報酬</b>(打敗 benchmark 標竿);不玩衍生性商品。</div>
+    <div class="entry"><b>對沖基金</b>:追<b>絕對報酬</b>;手法=高度槓桿 + 套利 + 積極買賣衍生性商品。</div>
+    <div class="tip">🧠 比指數、求相對=共同基金;避險基金反而最敢玩衍生性商品。</div>
+
+    <div class="group-head"><h4>績效與風險衡量</h4><span class="relate">🔗 對照⑪風險(系統風險)</span></div>
+    <div class="entry"><b>風險貼水</b>:承擔風險額外要求的報酬。</div>
+    <div class="entry"><b>β 值</b> = 基金波動度 ÷ 市場波動度。</div>
+    <div class="tip">🧠 例 9.9% ÷ 9% = 1.1。β&gt;1 比大盤兇、β&lt;1 比大盤穩;貼水/風險 ↑ → 要求報酬 ↑ → 股價現值 ↓。</div>
+    <div class="entry"><b>標竿要對應</b>:產業型基金要用「該產業指數」比,不能用大盤指數。</div>
+
+    <div class="group-head"><h4>投資決策三層</h4></div>
+    <div class="entry"><b>資產配置</b>(股 or 債)→ <b>選產業/選證券</b> → <b>進出場時機</b>。</div>
+
+  </div>
+</details>
+
+<!-- 7 -->
+<details class="chapter" id="c7">
+  <summary><span class="num">07</span>期貨(有結算所 = 沒信用風險)<span class="chev">▸</span></summary>
+  <div class="chapter-body">
+
+    <div class="group-head"><h4>基本特性</h4><span class="relate">🔗 對照②機關(結算所角色)</span></div>
+    <div class="entry">集中競價、每日結算、定型化合約、<b>沒有對手信用風險</b>(有結算所)。</div>
+    <div class="tip">🧠 「承擔對方信用風險」是遠期合約,不是期貨。</div>
+    <div class="entry"><b>保證金要「下單買賣之前」先繳足</b>。</div>
+    <div class="entry">我國採<b>總額保證金法</b>(買賣分開加總,不互抵)。</div>
+
+    <div class="group-head"><h4>保證金三層</h4></div>
+    <div class="entry"><b>原始保證金</b>:開倉要繳的錢。</div>
+    <div class="entry"><b>維持保證金</b>:警戒線,淨值跌破就被<b>追繳</b>。</div>
+    <div class="entry">被追繳後 → 補回到<b>原始保證金</b>高度。</div>
+    <div class="tip">🧠 跌破「維持」,補到「原始」。</div>
+
+    <div class="group-head"><h4>委託單</h4></div>
+    <div class="entry"><b>停損單</b>:停損買單設在市價「之上」、停損賣單設在市價「之下」。</div>
+    <div class="tip">🧠 跌破就賣、漲破就買回,跟限價單「買低賣高」相反。</div>
+
+    <div class="group-head"><h4>基差(現貨價 − 期貨價)</h4></div>
+    <div class="entry">正常市場(期&gt;現):基差為負;逆價市場(現&gt;期):基差為正。</div>
+    <div class="entry"><b>到期時基差趨近「零」</b>。</div>
+    <div class="entry">避險拖到接近到期才收手 👉 <b>基差風險最小</b>、避險最準。</div>
+
+    <div class="group-head"><h4>避險觀念</h4><span class="relate">🔗 對照⑪風險(系統風險)</span></div>
+    <div class="entry"><b>完全避險仍可能被追繳</b> 👉 原因是<b>逐日結算</b>。</div>
+    <div class="entry"><b>煉油廠避險</b>:買原油期貨(鎖原料成本)+ 賣汽油期貨(鎖成品售價)。</div>
+    <div class="case">
+      <div class="label">📰 真實案例</div>
+      <p>航空公司常買石油期貨鎖定燃油成本,就是「買投入」避險的真實版本。</p>
+    </div>
+    <div class="tip">🧠 買投入、賣產出(裂解價差)。</div>
+    <div class="entry"><b>股價指數期貨</b>只能避「大盤一起跌」的<b>系統風險</b>;避不掉個別公司股利變動。</div>
+
+    <div class="group-head"><h4>利率期貨 / 交易所</h4></div>
+    <div class="entry">30 天期利率期貨,標的=<b>30 天期融資性商業本票(CP)</b>。</div>
+    <div class="entry"><b>摩根臺指期貨</b>:2020 年授權轉到<b>香港交易所(HKEX)</b>。</div>
+    <div class="tip">🧠 更新後=香港,別選 SGX。</div>
+
+  </div>
+</details>
+
+<!-- 8 -->
+<details class="chapter" id="c8">
+  <summary><span class="num">08</span>選擇權(買方付錢買自由、賣方收錢扛義務)<span class="chev">▸</span></summary>
+  <div class="chapter-body">
+
+    <div class="group-head"><h4>四種角色</h4><span class="relate">🔗 對照⑦期貨(很多概念共用)</span></div>
+    <div class="entry"><b>買權(Call)</b>=未來可「買」的權利;<b>賣權(Put)</b>=未來可「賣」的權利。</div>
+    <div class="entry"><b>買方</b>:付權利金、有權不履約 👉 <b>不必繳保證金</b>。</div>
+    <div class="life">
+      <div class="label">🙋 生活情境</div>
+      <p>你付的保險費概念上很像權利金——買個保障,最大損失就是那筆保費。</p>
+    </div>
+    <div class="tip">🧠 只有「選擇權買方」不繳保證金。</div>
+    <div class="entry"><b>賣方</b>:收權利金、有義務配合履約、可能虧很大 👉 要繳保證金。</div>
+
+    <div class="group-head"><h4>價內 / 價外(和現貨比)</h4></div>
+    <div class="entry"><b>買權</b>:履約價 <b>&lt;</b> 現貨 → 價內。</div>
+    <div class="entry"><b>賣權</b>:履約價 <b>&gt;</b> 現貨 → 價內。</div>
+    <div class="tip">🧠 買權約定價低才划算、賣權約定價高才划算。</div>
+
+    <div class="group-head"><h4>被履約的結果</h4></div>
+    <div class="entry"><b>賣 Put 被履約 → 取得多頭期貨</b>;<b>賣 Call 被履約 → 取得空頭期貨</b>。</div>
+    <div class="tip">🧠 賣 Put 變多、賣 Call 變空。</div>
+
+    <div class="group-head"><h4>時間價值</h4></div>
+    <div class="entry">價平時最高;愈往「深價內/深價外」走,時間價值愈少。</div>
+    <div class="tip">🧠 深價內幾乎篤定履約,想像空間沒了 → 時間價值下降。</div>
+
+    <div class="group-head"><h4>台指合約規格</h4></div>
+    <div class="entry"><b>每 1 點 = 50 元</b>。</div>
+    <div class="tip">🧠 選擇權價值 = 賺的點數 ×50。例:履約 7200 的 Put、結算 7150 → 50 點 ×50 = 2,500 元。</div>
+
+  </div>
+</details>
+
+<!-- 9 -->
+<details class="chapter" id="c9">
+  <summary><span class="num">09</span>銀行業務與貨幣銀行<span class="chev">▸</span></summary>
+  <div class="chapter-body">
+
+    <div class="group-head"><h4>存款種類</h4><span class="relate">🔗 對照①市場分類(貨幣市場工具)</span></div>
+    <div class="entry"><b>定期存款</b>:有固定期限、憑存單提取、<b>可拿去質借</b>。</div>
+    <div class="entry"><b>活期存款</b>:隨時可領、沒固定期限。</div>
+    <div class="entry"><b>可轉讓定存單(NCD)</b>:一般以 <b>10 萬元</b>為一單位按倍數發行;天期<b>最低 1 個月、最長 1 年</b>;央行版 NCD 面額分三種:500萬/1000萬/1億(沒有100萬)。</div>
+    <div class="entry"><b>短期票券利息</b>:扣繳利息所得稅 <b>10%</b>(分離課稅);<b>活期存款利息</b>則要併入綜合所得申報,不是分離課稅。</div>
+    <div class="entry">承銷價格算法:國庫券/商業本票/銀行承兌匯票用<b>貼現</b>(打折賣);<b>NCD 不打折</b>,照票面利率算利息。</div>
+
+    <div class="group-head"><h4>貨幣市場的「錢」怎麼調度</h4><span class="relate">🔗 對照③法規(基本單位換算)</span></div>
+    <div class="entry"><b>拆款市場</b>:銀行間彼此互相調度短期資金(常是隔夜),誰錢多借誰、誰缺錢跟誰借。</div>
+    <div class="tip">🧠 「拆」=臨時挪用、短期調度,今天多今天少互相「拆東牆補西牆」,借了很快就還,借款方限金融機構,一般人不能參加。</div>
+    <div class="entry">拆款市場交割清算 👉 走<b>央行同資系統</b>(央行同業資金電子化調撥清算系統,銀行間大額資金轉帳專用)。</div>
+    <div class="entry">國庫券:中央政府調節國庫收支、發行<b>未滿一年</b>的信用工具。</div>
+    <div class="tip">🧠 政府要短期周轉發國庫券;要蓋建設借長期的錢才發公債。</div>
+
+    <div class="group-head"><h4>短期票券交割清算(票、錢分開管)</h4></div>
+    <div class="entry">短期票券<b>集中保管結算機構以「一家」為限</b>(統一登記保管,不分散)。</div>
+    <div class="entry">票券交割<b>款項</b>部分的清算 👉 由<b>央行同資系統</b>負責(不是台灣銀行、不是財金資訊網路,那是跨行提款轉帳用的;也不是聯徵中心,那是查信用紀錄的)。</div>
+    <div class="tip">🧠 票、錢分開管:「票」的部分由集中保管結算機構(一家)處理;「錢」的部分由央行同資系統處理。</div>
+
+    <div class="group-head"><h4>票據三兄弟</h4></div>
+    <div class="entry"><b>匯票</b>:發票人委託「付款人」代為付錢給受款人(三方關係)。<b>本票</b>:發票人自己付錢給受款人(二方關係)。</div>
+    <div class="entry">匯票的付款人是<b>銀行</b>=銀行承兌匯票;付款人是<b>一般公司</b>=商業承兌匯票。</div>
+    <div class="entry"><b>交易性商業本票</b>:因真實買賣交易而簽發。<b>融資性商業本票</b>:單純借錢用,背後沒有實際交易。</div>
+    <div class="tip">🧠 匯票=請別人付(三方);本票=自己付(二方)。「融資性」=借錢用,不是買賣東西開的票。</div>
+    <div class="entry"><b>RP(附買回協議)</b>:今天賣出、約好未來買回。</div>
+    <div class="tip">🧠 P=Purchase(買回),你賣了之後還要買回來。</div>
+
+    <div class="group-head"><h4>授信(放款)原則與擔保</h4></div>
+    <div class="entry">三大原則:<b>安全性、流動性、收益性</b>(不含「公開性」)。</div>
+    <div class="entry"><b>擔保授信</b>:不動產抵押、動產/權利質權、信保機構保證 👉「借款人自己開的票據」不算擔保。</div>
+    <div class="entry">房地產做擔保 → 房屋保險受益人是<b>銀行</b>。</div>
+    <div class="entry">消費者貸款利率:<b>購屋貸款最低</b>、現金卡循環信用最高。</div>
+    <div class="life">
+      <div class="label">🙋 生活情境</div>
+      <p>你辦房貸、辦信用卡、存定存,幾乎都在這一章。</p>
+    </div>
+
+    <div class="group-head"><h4>信用卡與相關卡</h4></div>
+    <div class="entry"><b>發卡銀行</b>:發卡給持卡人。<b>收單銀行</b>:收特約商店的簽帳單、撥款給商店。</div>
+    <div class="tip">🧠 商店那邊的錢由「收單銀行」收。</div>
+    <div class="entry"><b>現金卡</b>:結合卡片、可用提款機借現金、無擔保、救急用。</div>
+    <div class="entry"><b>簽帳卡</b>=直接扣存款;<b>認同卡</b>=掛團體 logo 的信用卡;<b>轉帳卡</b>=金融卡。</div>
+
+    <div class="group-head"><h4>銀行四大風險</h4><span class="relate">🔗 對照⑪風險(系統/非系統的另一套分法)</span></div>
+    <div class="entry"><b>信用風險</b>:違約還不出錢。<b>市場風險</b>:利率匯率股價波動。</div>
+    <div class="entry"><b>流動性風險</b>:臨時要用錢卻變現不及。<b>作業風險</b>:內控不良、人為疏失。</div>
+    <div class="entry">利率敏感性缺口 👉 管的是<b>利率風險(屬市場風險)</b>。</div>
+
+    <div class="group-head"><h4>銀行監理數字(必背)</h4></div>
+    <div class="entry"><b>逾放比率</b>:呆帳占比,<b>愈低資產品質愈好</b>。</div>
+    <div class="entry"><b>資本適足率</b>:及格線 <b>8%</b>;低於 <b>2%</b> = 銀行法「資本嚴重不足」。</div>
+    <div class="case">
+      <div class="label">📰 真實案例</div>
+      <p>銀行財報公布的逾放比、資本適足率,是投資人評估銀行體質的常見指標。</p>
+    </div>
+    <div class="tip">🧠 8% 及格、2% 重症;管「賠得起」用資本適足率、管「還得出」用流動比率。</div>
+
+    <div class="group-head"><h4>中央銀行</h4></div>
+    <div class="entry">獨占發行貨幣、執行貨幣政策、穩定匯率、維持支付制度。</div>
+    <div class="tip">🧠 「直接對企業融資」「核定商業銀行牌告利率」都不是央行的事。</div>
+    <div class="entry"><b>法定存款準備率「降低」→ 貨幣供給增加</b>;國際收支順差也會使貨幣供給增加。</div>
+
+    <div class="group-head"><h4>央行三大貨幣政策工具(方向要背)</h4></div>
+    <div class="entry"><b>重貼現率</b>:銀行手上有客戶拿票據來借錢的票(已貼現過一次),銀行資金不夠時可拿去找<b>央行</b>再貼現換現金,央行收的利率就是重貼現率——白話講就是「銀行跟央行借錢周轉的成本」。</div>
+    <div class="tip">🧠 重貼現率「升」→ 銀行跟央行借錢變貴 → 銀行不想借那麼多 → 市場資金變少 → <b>緊縮</b>;「降」→ 借錢變便宜 → 銀行敢借更多 → 市場資金變多 → <b>寬鬆</b>。</div>
+    <div class="entry">三個工具方向一致:<b>重貼現率、存款準備率「升」</b>或<b>賣出票券(如NCD)</b> 👉 都是把錢從市場收回來 = <b>緊縮</b>;三者反過來(降/降/買進)= <b>寬鬆</b>。</div>
+    <div class="tip">🧠 一句話通用三工具:「升/賣=收錢=緊縮;降/買=放錢=寬鬆」。公開市場操作最具時效性、機動性,是央行最常用的日常工具;調整稅率不是央行的貨幣政策工具(那是財政部的事)。</div>
+
+  </div>
+</details>
+
+<!-- 10 -->
+<details class="chapter" id="c10">
+  <summary><span class="num">10</span>外匯市場<span class="chev">▸</span></summary>
+  <div class="chapter-body">
+
+    <div class="group-head"><h4>匯率交易種類</h4><span class="relate">🔗 對照⑦期貨(遠期概念相通)</span></div>
+    <div class="entry"><b>即期交易</b>:現在成交,<b>第二個營業日(T+2)</b>交割。</div>
+    <div class="entry"><b>遠期交易</b>:現在講好匯率,未來某天才交割 👉 用來鎖匯率避險。</div>
+    <div class="tip">🧠 即期=T+2。</div>
+
+    <div class="group-head"><h4>各種「匯率」名詞</h4></div>
+    <div class="entry"><b>名目匯率</b>:牌告直接報價。<b>實質匯率</b>:用物價調整過。</div>
+    <div class="entry"><b>交叉匯率</b>:借第三種貨幣間接算出。<b>均衡匯率</b>:供需相等時形成。</div>
+    <div class="tip">🧠 調物價→實質;繞第三方→交叉;供需平衡→均衡;都沒有→名目。</div>
+
+    <div class="group-head"><h4>報價與買賣方向(計算題核心)</h4></div>
+    <div class="entry">銀行報「一買一賣」兩價,如 EUR/USD <b>1.1713 / 1.1717</b>。</div>
+    <div class="life">
+      <div class="label">🙋 生活情境</div>
+      <p>出國換匯、網購刷卡付外幣,都在用這裡的匯率報價。</p>
+    </div>
+    <div class="tip">🧠 銀行永遠賺價差 👉 客戶「買」用較高價、客戶「賣」用較低價。</div>
+
+    <div class="group-head"><h4>匯率避險</h4></div>
+    <div class="entry">外資怕未來匯出時本幣貶值 👉 買<b>無本金交割遠期外匯(NDF)</b>先鎖匯率。</div>
+
+    <div class="group-head"><h4>本幣升貶值判斷</h4></div>
+    <div class="entry">升值:本國利率上升、物價相對下跌、生產力提高、國際收支順差。</div>
+    <div class="entry">貶值:進口關稅下降(需要更多外幣)、國際收支逆差。</div>
+    <div class="case">
+      <div class="label">📰 真實案例</div>
+      <p>新台幣匯率波動大時,新聞常報導央行是否進場「外匯干預」。</p>
+    </div>
+    <div class="tip">🧠 外國人想進來/本國變吸引人 → 本幣升值;本國人想往外花錢 → 本幣貶值。</div>
+
+  </div>
+</details>
+
+<!-- 11 -->
+<details class="chapter" id="c11">
+  <summary><span class="num">11</span>風險觀念<span class="chev">▸</span></summary>
+  <div class="chapter-body">
+    <div class="entry"><b>系統風險(市場風險)</b>:全市場一起漲跌。</div>
+    <div class="life">
+      <div class="label">🙋 生活情境</div>
+      <p>股災時幾乎所有股票一起跌=系統風險,分散買很多檔也躲不掉。</p>
+    </div>
+    <div class="tip">🧠 只能用指數期貨避,分散投資也躲不掉。</div>
+    <div class="entry"><b>非系統風險</b>:只影響單一公司(財報造假、股利變動)。</div>
+    <div class="tip">🧠 靠分散持股就能降低。</div>
+    <div class="entry"><b>流動性風險</b>:缺錢時東西賣不掉或只能賤價賣。</div>
+    <div class="entry"><b>作業風險</b>:員工按錯系統/寫錯表(不是商品本身的風險)。</div>
+    <div class="entry"><b>內部控制</b>:防患未然(分工、強制休假)👉 獎懲制度是事後算帳,不算直接內控。</div>
+  </div>
+</details>
+
+<!-- 12 -->
+<details class="chapter" id="c12">
+  <summary><span class="num">12</span>金融商品與衍生性<span class="chev">▸</span></summary>
+  <div class="chapter-body">
+    <div class="entry"><b>現貨商品</b>:買實體 👉 組合式股票基金(買真股票)。</div>
+    <div class="entry"><b>衍生性商品</b>:依附別人對賭 👉 選擇權、期貨。</div>
+    <div class="life">
+      <div class="label">🙋 生活情境</div>
+      <p>買 ETF 算現貨商品;買期貨/選擇權算衍生性商品。</p>
+    </div>
+    <div class="entry"><b>TDR</b>:外國公司來<b>台灣(T)</b>發行的股票替代品。</div>
+    <div class="entry">海外籌資:TDR、ADR(美國)、GDR(全球)、ECB(歐洲可轉換公司債)。</div>
+    <div class="tip">🧠 沒有「HKDR」這種東西。</div>
+  </div>
+</details>
+
+<!-- 13 -->
+<details class="chapter" id="c13">
+  <summary><span class="num">13</span>永續金融 / ESG<span class="chev">▸</span></summary>
+  <div class="chapter-body">
+    <div class="tip">🧠 答題心法:長題目只找三種錯:被改錯的數字、多出來的怪句子、「立即/隨即生效」。</div>
+    <div class="entry"><b>淨零目標</b>:台灣是 <b>2050</b>(不是 2070)。</div>
+    <div class="entry"><b>溫室氣體盤查</b>:含<b>範疇一(直接排放)</b> + <b>範疇二(能源間接排放)</b>。</div>
+    <div class="entry"><b>公司治理 3.0</b>:主軸偏資訊透明、利害關係人溝通 👉「強化股東會職能」不是主軸。</div>
+    <div class="case">
+      <div class="label">📰 真實案例</div>
+      <p>上市公司近年陸續在官網公布永續報告書,可自行查閱對照這裡的規範。</p>
+    </div>
+    <div class="entry"><b>GRI 準則</b>:2021 改版後<b>有過渡期</b>,不是「隨即」適用。</div>
+  </div>
+</details>
+
+<!-- 14 -->
+<details class="chapter" id="c14">
+  <summary><span class="num">14</span>信託與資產證券化<span class="chev">▸</span></summary>
+  <div class="chapter-body">
+
+    <div class="group-head"><h4>信託基本概念</h4><span class="relate">🔗 對照⑥基金(委託人/受託人的概念相通)</span></div>
+    <div class="entry"><b>信託</b>:委託人把財產權<b>真的移轉</b>給受託人,受託人依委託人意旨為受益人管理處分財產。</div>
+    <div class="entry">依設立方式分三種:<b>契約信託、遺囑信託、宣言信託</b>(沒有「法定信託」這種)。</div>
+    <div class="tip">🧠 三種設立方式:契約、遺囑、宣言,考題常混入不存在的「法定信託」當陷阱。</div>
+
+    <div class="group-head"><h4>信託 vs 委任(最愛考的對照)</h4></div>
+    <div class="entry"><b>信託</b>:財產權<b>真的移轉</b>給受託人,受託人用自己名義管理處分。</div>
+    <div class="entry"><b>委任</b>:財產權<b>不移轉</b>,委任人自己還是所有權人,管理處分的效果<b>歸屬於委任人自己</b>,不是受任人。</div>
+    <div class="tip">🧠 信託轉移所有權;委任不轉移,委任人自己還是老闆。</div>
+
+    <div class="group-head"><h4>信託種類(依標的物分)</h4></div>
+    <div class="entry">依信託財產性質分:<b>動產信託</b>(如船舶)、<b>不動產信託</b>(如土地)、<b>金錢信託</b>、<b>有價證券信託</b>(如股票)、<b>金錢債權信託</b>(以給付一定金額為標的)。</div>
+    <div class="entry"><b>不指定營運範圍</b>的金錢信託,只能放安全標的:現金、銀行存款、短期票券(<b>不含上市股票</b>這種高風險資產)。</div>
+    <div class="tip">🧠 不指定用途=只能放安全的地方,股票太危險不行。</div>
+
+    <div class="group-head"><h4>信託當事人與監理</h4></div>
+    <div class="entry">股票、公司債作信託財產,除了證券上載明,還要<b>通知發行公司</b>才能對抗該公司。</div>
+    <div class="entry"><b>公益信託</b>的監督機關是<b>目的事業主管機關</b>(不是金管會)。</div>
+    <div class="entry">受託人責任:<b>不得</b>承諾擔保本金或最低收益率(信託本質是代管、不是保證獲利)。</div>
+    <div class="entry">信託消滅原因:<b>信託目的不能完成</b>時信託才消滅;委託人死亡、受託人破產、委託人喪失行為能力都<b>不會當然</b>使信託消滅(信託是為受益人存在的)。</div>
+    <div class="tip">🧠 信託為「目的」而生,目的沒了信託才沒了,不是委託人怎麼樣信託就跟著沒了。</div>
+
+    <div class="group-head"><h4>金融資產證券化</h4><span class="relate">🔗 對照⑫金融商品(現貨/衍生性)</span></div>
+    <div class="entry">創始機構把資產(如房貸債權、車貸債權、信用卡債權)<b>移轉、出售</b>給特殊目的機構(SPV),由 <b>SPV 發行</b>有價證券(不是創始機構自己發行)。</div>
+    <div class="tip">🧠 創始機構賣資產、SPV 才發證券,別搞反發行主體。</div>
+    <div class="entry"><b>不動產</b>本身不屬於金融資產證券化條例所指之資產(債權類才算)。</div>
+
+  </div>
+</details>
+
+<!-- 15 -->
+<details class="chapter" id="c15">
+  <summary><span class="num">15</span>風險管理與保險基礎<span class="chev">▸</span></summary>
+  <div class="chapter-body">
+
+    <div class="group-head"><h4>四個核心名詞(順序很重要)</h4><span class="relate">🔗 對照⑪風險觀念</span></div>
+    <div class="entry"><b>風險</b>=損失的不確定性。<b>風險因素</b>=增加損失機會/幅度的背景條件(如健康狀況)。</div>
+    <div class="entry"><b>風險事故</b>=直接造成損失的意外事件本身(如車禍)。<b>風險標的</b>=暴露在風險下的對象(如你的車)。</div>
+    <div class="tip">🧠 順序是:風險因素(背景條件)→ 風險事故(真的發生)→ 損失。是「因素影響事故」,不是「事故影響因素」,這是常見的反著考陷阱。</div>
+
+    <div class="group-head"><h4>風險分類</h4></div>
+    <div class="entry"><b>純粹風險</b>=只賠不賺(火災、車禍、信用風險);<b>投機風險</b>=有賺有賠(外匯、投資)。</div>
+    <div class="entry"><b>基本風險</b>=波及一大片人(地震、不景氣);<b>特定風險</b>=只影響自己。</div>
+    <div class="tip">🧠 保險公司只保「純粹風險」,投機風險(自己選擇要冒的)不保。</div>
+
+    <div class="group-head"><h4>風險管理方法(兩大類,超常考)</h4></div>
+    <div class="tblwrap">
+    <table class="cmp">
+      <tr><th>風險控制(改變風險本身)</th><th>風險理財(用錢因應)</th></tr>
+      <tr><td>損失預防(事前防止發生)</td><td>風險自留(自己扛)</td></tr>
+      <tr><td>損失抑制(事故後減少擴大)</td><td>投保保險</td></tr>
+      <tr><td>風險避免(乾脆不做,唯一能讓頻率歸零)</td><td>提撥準備金</td></tr>
+      <tr><td>風險隔離(分散單位)</td><td></td></tr>
+    </table>
+    </div>
+    <div class="tip">🧠 「防止發生」=預防;「減少擴大」=抑制;「不做了」=避免;「自己扛/花錢轉嫁」=理財類。時間點是關鍵:預防在事故「前」,抑制在事故「後」。</div>
+
+    <div class="group-head"><h4>情境判斷(依頻率/幅度選方法)</h4></div>
+    <div class="entry">頻率<b>小</b>、幅度<b>大</b>(機率低但一賠就慘重)→ <b>保險</b>(自己扛不起,花小錢轉嫁給大家分攤)。</div>
+    <div class="entry">幅度<b>不大</b>、且能<b>精確估計</b> → <b>風險自留</b>(金額小又算得準,自己準備錢就好,不必多花保費)。</div>
+    <div class="entry">想把發生<b>頻率降到零</b> → <b>風險避免</b>(唯一辦法是根本不參與這件事,例如不開車就沒車禍風險)。</div>
+    <div class="entry">想<b>降低發生頻率</b>(但不是歸零)→ <b>損失預防</b>(事前採取行動,如裝滅火器、定期健檢)。</div>
+    <div class="tip">🧠 記兩組對照:「頻率小幅度大→保險」vs「幅度小能預估→自留」;「要歸零→避免」vs「要降低→預防」。</div>
+    <div class="life">
+      <div class="label">🙋 生活情境</div>
+      <p>車禍已發生、搶救傷患=事故後阻止擴大=<b>損失抑制</b>;車禍前先檢修汽車=事故前防範=<b>損失預防</b>;賣掉車子不開=根本不參與=<b>風險避免</b>。</p>
+    </div>
+
+    <div class="group-head"><h4>保險契約基本名詞</h4></div>
+    <div class="entry">可保風險要件:損失機率須可預測、損失須明確可衡量、須有大量<b>同質性</b>風險單位、須有釀成重大損失的可能。</div>
+    <div class="entry">保險契約<b>當事人</b>=<b>要保人與保險人</b>(簽約的兩方);<b>關係人</b>=當事人再加上<b>被保險人與受益人</b>(範圍更大)。</div>
+    <div class="entry">你「繳」給保險公司的叫<b>保險費</b>;公司「賠」給你的叫<b>保險金</b>;契約約定的理賠上限叫<b>保險金額</b>。</div>
+    <div class="tip">🧠 你「繳」的是保費;公司「賠」的是保險金;當事人只有兩個(要保人、保險人),關係人是當事人的超集合。</div>
+
+  </div>
+</details>
+
+<!-- Quick review pinned -->
+<section class="pinned" id="quick">
+  <span class="num">🧠</span>
+  <h2>一頁速記口訣</h2>
+
+  <div class="group-head"><h4>市場 / 交易</h4></div>
+  <div class="entry">短期票券=貨幣、長期股債=資本;公司拿到錢=初級、股民互買=次級。</div>
+  <div class="entry">漲跌幅=競價基準 ±10%;鉅額=500 單位;上櫃=2 家推薦;股票股利先除以 10;內線=18 小時。</div>
+
+  <div class="group-head"><h4>債券</h4></div>
+  <div class="entry">利率漲債券跌;年期長風險大;票面利率高變動小;溢價買殖利率低;三個 B 才投資等級。</div>
+
+  <div class="group-head"><h4>基金</h4></div>
+  <div class="entry">積極選成長、保守選價值;封閉型少於開放型;依淨值=開放型、看市場價=封閉型;共同基金追相對、對沖基金追絕對。</div>
+
+  <div class="group-head"><h4>期貨 / 選擇權</h4></div>
+  <div class="entry">有結算所=沒信用風險;跌破「維持」補到「原始」;停損單方向相反;到期基差歸零。</div>
+  <div class="entry">只有「選擇權買方」不繳保證金;賣 Put 變多頭、賣 Call 變空頭;台指每點 50 元。</div>
+
+  <div class="group-head"><h4>銀行 / 外匯</h4></div>
+  <div class="entry">逾放比愈低愈好;資本適足率 8% 及格、2% 重症;可轉讓定存單 10 萬起、天期1個月~1年;放款三原則=安全/流動/收益。</div>
+  <div class="entry">即期=T+2、遠期鎖未來;客戶買用高價、賣用低價;外國人想進來→本幣升、本國人往外花→本幣貶。</div>
+  <div class="entry">拆款市場管銀行間短期調度、票券清算票錢分開(集保機構管票、央行同資系統管錢);匯票三方/本票二方;央行工具「升賣=緊縮、降買=寬鬆」。</div>
+
+  <div class="group-head"><h4>信託</h4></div>
+  <div class="entry">信託三設立方式=契約/遺囑/宣言(無法定信託);信託移轉所有權、委任不移轉;證券化=創始機構賣資產、SPV發證券。</div>
+
+  <div class="group-head"><h4>風險 / 保險</h4></div>
+  <div class="entry">系統風險躲不掉、非系統靠分散;風險因素→風險事故→損失;頻率小幅度大→保險、幅度小能預估→自留、要歸零→避免、要降頻率→預防。</div>
+  <div class="entry">淨零 2050、範疇一+二、「立即生效」是陷阱。</div>
+
+</section>
+
+</main>
+
+<footer>金融市場常識 · 考前複習筆記 · 完全離線可用</footer>
+
+<div class="fab">
+  <button id="topBtn" title="回頂端">↑</button>
+</div>
+
+<script>
+(function(){
+  var toggleAllBtn = document.getElementById('toggleAllBtn');
+  var chapters = Array.prototype.slice.call(document.querySelectorAll('details.chapter'));
+  var allOpen = false;
+
+  toggleAllBtn.addEventListener('click', function(){
+    allOpen = !allOpen;
+    chapters.forEach(function(d){ d.open = allOpen; });
+    toggleAllBtn.textContent = allOpen ? '全部收合' : '全部展開';
+  });
+
+  document.getElementById('topBtn').addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  var input = document.getElementById('searchInput');
+  var noMatch = document.getElementById('noMatch');
+
+  input.addEventListener('input', function(){
+    var q = input.value.trim().toLowerCase();
+    var anyChapterVisible = false;
+
+    chapters.forEach(function(d){
+      var body = d.querySelector('.chapter-body');
+      var items = Array.prototype.slice.call(body.querySelectorAll('.entry, .tip, .case, .life'));
+      var chapterMatch = false;
+
+      if(q === ''){
+        items.forEach(function(el){ el.style.display = ''; });
+        d.style.display = '';
+        chapterMatch = true;
+      } else {
+        items.forEach(function(el){
+          var txt = el.textContent.toLowerCase();
+          if(txt.indexOf(q) !== -1){
+            el.style.display = '';
+            chapterMatch = true;
+          } else {
+            el.style.display = 'none';
+          }
+        });
+        d.style.display = chapterMatch ? '' : 'none';
+        if(chapterMatch) d.open = true;
+      }
+      if(chapterMatch) anyChapterVisible = true;
+    });
+
+    noMatch.style.display = (q !== '' && !anyChapterVisible) ? 'block' : 'none';
+  });
+})();
+</script>
+
+</body>
+</html>
