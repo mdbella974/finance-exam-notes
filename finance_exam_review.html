@@ -74,6 +74,8 @@
     border:1px solid var(--paper-line); padding:6px 11px; border-radius:999px; text-decoration:none; white-space:nowrap;
   }
   main{ padding:14px 14px 0 46px; position:relative; z-index:1; }
+  html{ scroll-behavior:smooth; }
+  details.chapter, section.pinned{ scroll-margin-top: 175px; }
   details.chapter{
     background:var(--card); border:1px solid var(--paper-line); border-radius:14px;
     margin-bottom:12px; box-shadow:var(--shadow); overflow:hidden;
@@ -137,7 +139,7 @@
 <header>
   <div class="eyebrow">Exam Notes · 考前複習</div>
   <h1>金融市場常識</h1>
-  <p class="sub">15 章 · 離線可讀 · 搜尋任何名詞</p>
+  <p class="sub">17 章 · 離線可讀 · 搜尋任何名詞</p>
   <div class="legend">
     <span class="lg-relate">🔗 關聯</span>
     <span class="lg-case">📰 真實案例</span>
@@ -166,6 +168,8 @@
   <a href="#c13">⑬ ESG</a>
   <a href="#c14">⑭ 信託</a>
   <a href="#c15">⑮ 風險保險</a>
+  <a href="#c16">⑯ 人身社會保險</a>
+  <a href="#c17">⑰ 財產保險</a>
   <a href="#quick">🧠 速記</a>
 </nav>
 
@@ -489,9 +493,9 @@
     <div class="group-head"><h4>存款種類</h4><span class="relate">🔗 對照①市場分類(貨幣市場工具)</span></div>
     <div class="entry"><b>定期存款</b>:有固定期限、憑存單提取、<b>可拿去質借</b>。</div>
     <div class="entry"><b>活期存款</b>:隨時可領、沒固定期限。</div>
-    <div class="entry"><b>可轉讓定存單(NCD)</b>:一般以 <b>10 萬元</b>為一單位按倍數發行;天期<b>最低 1 個月、最長 1 年</b>;央行版 NCD 面額分三種:500萬/1000萬/1億(沒有100萬)。</div>
+    <div class="entry"><b>可轉讓定存單(NCD, Negotiable Certificate of Deposit)</b>:一般以 <b>10 萬元</b>為一單位按倍數發行;天期<b>最低 1 個月、最長 1 年</b>;央行版 NCD 面額分三種:500萬/1000萬/1億(沒有100萬)。</div>
     <div class="entry"><b>短期票券利息</b>:扣繳利息所得稅 <b>10%</b>(分離課稅);<b>活期存款利息</b>則要併入綜合所得申報,不是分離課稅。</div>
-    <div class="entry">承銷價格算法:國庫券/商業本票/銀行承兌匯票用<b>貼現</b>(打折賣);<b>NCD 不打折</b>,照票面利率算利息。</div>
+    <div class="entry">承銷價格算法:國庫券/商業本票/銀行承兌匯票用<b>貼現</b>(打折賣);<b>NCD(可轉讓定存單)不打折</b>,照票面利率算利息。</div>
 
     <div class="group-head"><h4>貨幣市場的「錢」怎麼調度</h4><span class="relate">🔗 對照③法規(基本單位換算)</span></div>
     <div class="entry"><b>拆款市場</b>:銀行間彼此互相調度短期資金(常是隔夜),誰錢多借誰、誰缺錢跟誰借。</div>
@@ -527,7 +531,8 @@
     <div class="entry"><b>發卡銀行</b>:發卡給持卡人。<b>收單銀行</b>:收特約商店的簽帳單、撥款給商店。</div>
     <div class="tip">🧠 商店那邊的錢由「收單銀行」收。</div>
     <div class="entry"><b>現金卡</b>:結合卡片、可用提款機借現金、無擔保、救急用。</div>
-    <div class="entry"><b>簽帳卡</b>=直接扣存款;<b>認同卡</b>=掛團體 logo 的信用卡;<b>轉帳卡</b>=金融卡。</div>
+    <div class="entry"><b>簽帳卡(Debit Card)</b>=消費當下<b>直接扣存款帳戶餘額</b>,沒錢就刷不過,銀行沒有幫你墊錢;<b>轉帳卡(金融卡)</b>=本質同樣綁定存款帳戶,原本主功能是提款/轉帳,現在也常兼具簽帳卡的即時扣款功能。<b>認同卡</b>=掛團體 logo 的信用卡。</div>
+    <div class="tip">🧠 三張卡的付款邏輯不同:<b>信用卡</b>=銀行先墊錢、月底才還(先花後還);<b>簽帳卡/金融卡</b>=消費當下直接從存款扣(即時扣款,沒錢刷不過);<b>現金卡</b>=直接跟銀行借現金花(無擔保消費性貸款)。</div>
 
     <div class="group-head"><h4>銀行四大風險</h4><span class="relate">🔗 對照⑪風險(系統/非系統的另一套分法)</span></div>
     <div class="entry"><b>信用風險</b>:違約還不出錢。<b>市場風險</b>:利率匯率股價波動。</div>
@@ -551,7 +556,7 @@
     <div class="group-head"><h4>央行三大貨幣政策工具(方向要背)</h4></div>
     <div class="entry"><b>重貼現率</b>:銀行手上有客戶拿票據來借錢的票(已貼現過一次),銀行資金不夠時可拿去找<b>央行</b>再貼現換現金,央行收的利率就是重貼現率——白話講就是「銀行跟央行借錢周轉的成本」。</div>
     <div class="tip">🧠 重貼現率「升」→ 銀行跟央行借錢變貴 → 銀行不想借那麼多 → 市場資金變少 → <b>緊縮</b>;「降」→ 借錢變便宜 → 銀行敢借更多 → 市場資金變多 → <b>寬鬆</b>。</div>
-    <div class="entry">三個工具方向一致:<b>重貼現率、存款準備率「升」</b>或<b>賣出票券(如NCD)</b> 👉 都是把錢從市場收回來 = <b>緊縮</b>;三者反過來(降/降/買進)= <b>寬鬆</b>。</div>
+    <div class="entry">三個工具方向一致:<b>重貼現率、存款準備率「升」</b>或<b>賣出票券(如NCD可轉讓定存單)</b> 👉 都是把錢從市場收回來 = <b>緊縮</b>;三者反過來(降/降/買進)= <b>寬鬆</b>。</div>
     <div class="tip">🧠 一句話通用三工具:「升/賣=收錢=緊縮;降/買=放錢=寬鬆」。公開市場操作最具時效性、機動性,是央行最常用的日常工具;調整稅率不是央行的貨幣政策工具(那是財政部的事)。</div>
 
   </div>
@@ -727,6 +732,136 @@
   </div>
 </details>
 
+<!-- 16 -->
+<details class="chapter" id="c16">
+  <summary><span class="num">16</span>人身保險與社會保險<span class="chev">▸</span></summary>
+  <div class="chapter-body">
+
+    <div class="group-head"><h4>保險法大分類</h4><span class="relate">🔗 對照⑮風險保險(可保風險要件)</span></div>
+    <div class="entry">保險法分兩大類:<b>財產保險</b>(保東西)、<b>人身保險</b>(保人)。</div>
+    <div class="entry"><b>人身保險=定額保險</b>(出事賠固定金額,不管實際損失多少);<b>財產保險=損害填補</b>(賠多少看實際損失)。</div>
+    <div class="entry">財產保險特性:事故發生<b>不規則</b>、保額差距大、保險期間<b>通常一年</b>、依賴再保險程度深;人壽保險特性剛好相反(可用生命表算出規則性)。</div>
+    <div class="entry">財產保險分類(法定列舉):火災、海上、陸空、責任、保證、其他財產保險——<b>汽車保險是商品名,不是法定分類</b>。</div>
+    <div class="entry">財產保險<b>不承保土地本身</b>(土地不會滅失);<b>不承保核子輻射</b>(風險太集中無法估算)。</div>
+    <div class="entry">產險公司<b>不得經營年金保險</b>(年金需長期精算,屬人身保險核心業務);但可經營短期健康險、傷害險、旅行平安險。</div>
+    <div class="tip">🧠 產險可以碰「短期、意外」的人身險;碰不得「長期、活越久領越多」的年金。</div>
+
+    <div class="group-head"><h4>人壽保險三種型態</h4></div>
+    <div class="entry"><b>死亡保險</b>:賭你會死。你活著時不賠;你死了,家人才領到理賠金 → 目的是保障家人。</div>
+    <div class="entry"><b>生存保險</b>:賭你會活著。你活到期滿,自己領錢;你中途死了,家人領不到 → 目的是強迫儲蓄。</div>
+    <div class="entry"><b>生死合險(養老險)</b>:兩邊都賭。活到期滿自己領生存金;中途死了家人領死亡給付 → 兩種保障都要。</div>
+    <div class="tip">🧠 死亡保險=死了才有錢;生存保險=活著才有錢;生死合險=死活都有錢,保費也最貴。</div>
+    <div class="entry">生存保險金來源:同一批保戶裡,中途死亡的人依規則領不到生存金,他們繳的保費就留在資金池裡;活到最後的人領到的錢 = <b>自己繳的保費+利息</b> 加上 <b>這些中途過世者留下的保費</b>,體現大數法則互助精神。</div>
+
+    <div class="group-head"><h4>定期保險</h4></div>
+    <div class="entry">特性:保費便宜、<b>中途退保不能退費</b>、期滿仍生存則<b>保障全失</b>(沒有任何給付),死亡才給付死亡保險金(<b>不是</b>退保費)。</div>
+    <div class="entry"><b>遞減型定期保險</b>:保額隨時間變少,適合<b>貸款買房</b>(房貸餘額越還越少)。</div>
+    <div class="entry"><b>遞增型定期保險</b>:保額隨時間變多,適合<b>年輕夫妻養育子女</b>(家庭責任隨孩子長大增加)。</div>
+    <div class="tip">🧠 房貸遞減、養育責任遞增,方向剛好相反,別搞混。</div>
+
+    <div class="group-head"><h4>人壽保險關鍵年限(法定數字)</h4></div>
+    <div class="entry">死亡給付生效門檻:被保險人須<b>年滿15歲</b>(防止拿幼童性命圖利)。</div>
+    <div class="entry">保費逾期未繳,催告到達後<b>30天</b>內仍不繳,契約效力才停止。</div>
+    <div class="entry">「故意自殺仍理賠」條款,須訂約滿<b>2年</b>後才生效(防道德風險的觀察期)。</div>
+
+    <div class="group-head"><h4>投資型保單</h4><span class="relate">🔗 對照⑥基金(β值、分離帳戶概念相通)</span></div>
+    <div class="entry"><b>變額壽險</b>:保費<b>固定</b>、保險金<b>不固定</b>(隨投資績效浮動)、投資採<b>分離帳戶</b>管理(不跟保險公司自有資產混在一起)。</div>
+    <div class="entry"><b>萬能變額壽險</b>:進階版,現金價值不固定、保證利率較低、<b>保障彈性更大</b>(連保費、繳費期間都能調整)。</div>
+    <div class="tip">🧠 「變額」變的是保額,不是保費;「萬能」連保費、繳費時間都能自己調,彈性最大。</div>
+
+    <div class="group-head"><h4>意外傷害保險</h4></div>
+    <div class="entry">意外事故三要件:<b>外來、突發、非疾病所致</b>。<b>內在原因觸發(如自身疾病)不算意外</b>,這是最愛考的排除項。</div>
+    <div class="entry">傷害險保費考量重點是<b>職業、工作環境、意外發生率</b>;<b>不是年齡</b>(年齡是壽險在看死亡率用的)。</div>
+    <div class="tip">🧠 傷害險看「你做什麼工作」,壽險才看「你幾歲」。</div>
+
+    <div class="group-head"><h4>年金保險</h4></div>
+    <div class="entry"><b>公共年金</b>(政府辦,如國民年金):照顧<b>基本</b>經濟生活。<b>商業年金</b>(自己買):依個人財力補充。</div>
+    <div class="entry">社會年金保險範疇=<b>老年、失能、遺屬</b>三種年金;「延期年金」是商業年金依「何時開始領」的分類,不屬社會年金體系。</div>
+
+    <div class="group-head"><h4>團體保險</h4></div>
+    <div class="entry">特色:承保時<b>僅簽發一張總保險單</b>、要保人是<b>企業</b>、<b>核保簡單、通常免體檢</b>(靠人數多分散風險)。</div>
+    <div class="entry">最低團體人數通常為<b>5人</b>。</div>
+    <div class="entry">團體傷害險保費考量:<b>職業、工作環境、意外發生率</b>,<b>不含年齡</b>。</div>
+    <div class="tip">🧠 團體保險核保簡單、免體檢,是它跟個人保險最大的差異。</div>
+
+    <div class="group-head"><h4>社會保險體系總覽</h4><span class="relate">🔗 對照⑨銀行(各機關主管單位)</span></div>
+    <div class="entry"><b>公教人員保險</b>主管機關=<b>考試院銓敘部</b>(不是金管會);給付<b>不含醫療給付</b>(健保管醫療)。</div>
+    <div class="entry"><b>勞工保險</b>主管機關=<b>勞動部</b>;給付<b>不含失業給付</b>(失業給付另外歸就業保險管);被保險人年齡限制<b>15~65歲</b>。</div>
+    <div class="entry"><b>就業保險</b>主管機關=<b>勞動部</b>;被保險人限<b>本國籍受僱勞工</b>,<b>不含公教人員、不含外籍勞工</b>。</div>
+    <div class="entry"><b>軍人保險</b>主管機關=<b>國防部</b>(臺灣銀行只是承辦收付,不是主管機關);承保對象限<b>現役軍人</b>;給付不含「育嬰留職留薪津貼」(正確用詞是留職<b>停薪</b>)。</div>
+    <div class="entry">軍人保險退伍/身心障礙給付受益人=<b>被保險人本人</b>(人還活著給本人;死亡給付才給配偶子女)。</div>
+    <div class="tip">🧠 判斷受益人的萬用法則:人還活著的給付→給本人;人死了的給付→才給遺屬。</div>
+
+    <div class="group-head"><h4>全民健康保險</h4></div>
+    <div class="entry">健保承保<b>疾病、傷害、生育</b>三種事故,<b>不含失能</b>(失能給付另歸勞保/國民年金,健保只付醫藥費)。</div>
+    <div class="entry">第一類被保險人負擔眷屬保費,最高以<b>3口</b>為限。</div>
+    <div class="entry">健保(法定給付)vs 商業健康險(契約約定給付):健保<b>強制投保</b>、經營主體是<b>政府</b>、給付內容<b>由法律規定</b>;商業險給付內容由<b>契約約定</b>(不是法律規定)。</div>
+
+    <div class="case">
+      <div class="label">📰 全民健保六大類完整名單</div>
+      <p><b>第一類</b>:公教人員、受僱者、雇主、自營業主、自行執業之專門職業人員(有雇主或自己是頭家)。<br>
+      <b>第二類</b>:職業工會會員、外雇船員(有職業工會身份的自由業者)。<br>
+      <b>第三類</b>:農漁會甲類會員、實際從事農漁業工作者。<br>
+      <b>第四類</b>:義務役軍人、軍校學生、替代役役男、受刑人、<b>榮民及其家戶代表</b>(政府照顧身份)。<br>
+      <b>第五類</b>:低收入戶戶內成員。<br>
+      <b>第六類</b>:其他無職業家戶代表、12歲以上在學學生、不屬前五類者(兜底分類)。</p>
+    </div>
+    <div class="tip">🧠 榮民在<b>第四類</b>,不是第一類;第一類保費上限3口這條規則只適用第一類。整體邏輯:經濟能力越強、自己繳越多;身份越特殊需照顧、政府補助越多。</div>
+
+  </div>
+</details>
+
+<!-- 17 -->
+<details class="chapter" id="c17">
+  <summary><span class="num">17</span>財產保險<span class="chev">▸</span></summary>
+  <div class="chapter-body">
+
+    <div class="group-head"><h4>財產保險核心名詞</h4><span class="relate">🔗 對照⑯人身保險(定額 vs 損害填補)</span></div>
+    <div class="entry"><b>保險價額</b>:標的物在事故當下的實際客觀價值,用來判斷有沒有超額投保。<b>責任保險沒有保險價額概念</b>(保的是抽象責任,不是具體的物,無法事先估價)。</div>
+    <div class="entry"><b>共保條款</b>:要求投保金額達標的物價值一定比例,否則理賠打折。<b>商業火險共保比例80%;住宅火險共保比例60%</b>。</div>
+    <div class="entry"><b>定值保單</b>:投保時先講好固定金額,出事直接賠(用於<b>古董、藝術品</b>這種難以事後客觀鑑價的標的)。<b>不定值保單</b>:出事後照實際價值賠(廠房、傢俱、機器設備這種有市價可查的)。</div>
+    <div class="entry"><b>保險利益</b>須在<b>保險事故發生時</b>存在(不是要保時或簽約時,關鍵是出事那一刻你有沒有損失)。</div>
+    <div class="entry"><b>直接損失</b>(財物本身壞掉,如廠房燒毀)vs <b>間接損失</b>(因此少賺的錢,如營業中斷)。複保險理賠採<b>保險金額比例分攤法</b>。</div>
+    <div class="tip">🧠 有具體的「物」才有保險價額;責任是抽象的,估不出價。估不出來的東西才需要定值保單。</div>
+
+    <div class="group-head"><h4>火災保險數字對照(超易混)</h4></div>
+    <div class="tblwrap">
+    <table class="cmp">
+      <tr><th></th><th>商業火災保險</th><th>住宅火災地震基本保險</th></tr>
+      <tr><td>共保比例</td><td>80%</td><td>60%</td></tr>
+      <tr><td>保額基礎</td><td>實際價值(扣折舊)</td><td>重置成本(不扣折舊)</td></tr>
+      <tr><td>地震賠償限額</td><td>—</td><td>150 萬元(建築物)</td></tr>
+    </table>
+    </div>
+    <div class="entry">基本承保事故:閃電雷擊、爆炸<b>引起之火災</b>(注意是火災本身、不含單純爆炸)、竊盜後縱火。</div>
+    <div class="tip">🧠 商業火險扣折舊(讓你不會因為房子舊了就少賠太多但也不會超賠);住宅火險不扣折舊(目的是讓災民真的重建得起)。</div>
+
+    <div class="group-head"><h4>海上保險</h4></div>
+    <div class="entry"><b>共同海損</b>:為船貨共同安全故意犧牲部分財產(如丟貨減重)→ 屬於<b>部分損失</b>(不是全損,船和其餘貨物都保住了)。</div>
+    <div class="entry"><b>查勘費、公證費</b>=<b>額外費用</b>(事後鑑定損失多少的開銷,不同於「損害防止費用」是事中阻止損失擴大)。</div>
+
+    <div class="group-head"><h4>汽車保險</h4></div>
+    <div class="entry">車體損失險三式,保障範圍<b>甲式 > 乙式 > 丙式</b>。<b>丙式</b>只保車對車碰撞,範圍最窄但<b>免自負額</b>(責任歸屬清楚,不需自負額防道德風險)。</div>
+    <div class="entry">自用汽車保險單<b>不含旅客責任險</b>(那是營業用車才需要的)。</div>
+    <div class="entry">第三人責任險<b>附加被保險人</b>=列名被保險人之配偶、所僱用駕駛人、同居家屬;<b>保單上載明的本人</b>是「列名被保險人」,不算「附加」被保險人。</div>
+    <div class="tip">🧠 本人是主角,配偶、司機、同居家屬才是附加進來的。</div>
+
+    <div class="group-head"><h4>責任保險與員工誠實保證</h4></div>
+    <div class="entry"><b>責任保險</b>又稱<b>第三人責任保險</b>,只保<b>民事責任</b>(賠錢),<b>不保刑事責任</b>(坐牢不能用保險轉嫁)。</div>
+    <div class="entry"><b>員工誠實保證保險</b>:保障員工監守自盜(詐欺、侵占、竊盜)的損失,被保證對象是<b>會計、業務、經理等受僱員工</b>;<b>董監事不屬於</b>(他們是經營決策層,適用董監事責任險)。</div>
+
+    <div class="group-head"><h4>信用保險</h4></div>
+    <div class="entry"><b>通用保單</b>=涵蓋被保險人名下<b>所有</b>債務人;<b>特定保單</b>=只保<b>指定</b>債務人。回溯保單/前伸保單則是依<b>時間</b>範圍的分類,維度不同。</div>
+
+    <div class="group-head"><h4>強制汽車責任保險 vs 住宅地震基本保險(數字別搞混)</h4></div>
+    <div class="entry"><b>強制汽車責任保險</b>死亡給付=<b>200萬元</b>;性質為政府部份補貼、公辦民營、無盈無虧原則,<b>包括軍用汽車</b>。</div>
+    <div class="entry"><b>特別補償基金</b>:給肇事者找不到、未保險、未經同意使用車輛的情況求償;若<b>事故汽車可以查究</b>(找得到人),就直接跟肇事者求償,不能申請特別補償。</div>
+    <div class="entry"><b>住宅地震基本保險</b>對建築物賠償限額=<b>150萬元</b>(基本保障,想要更高需另加保超額地震險)。</div>
+    <div class="tip">🧠 強制車險死亡200萬、住宅地震150萬,兩個數字擺一起記才不會搞混。</div>
+
+  </div>
+</details>
+
 <!-- Quick review pinned -->
 <section class="pinned" id="quick">
   <span class="num">🧠</span>
@@ -756,6 +891,8 @@
 
   <div class="group-head"><h4>風險 / 保險</h4></div>
   <div class="entry">系統風險躲不掉、非系統靠分散;風險因素→風險事故→損失;頻率小幅度大→保險、幅度小能預估→自留、要歸零→避免、要降頻率→預防。</div>
+  <div class="entry">人身保險=定額;財產保險=損害填補。死亡給付滿15歲才生效、逾期30天停效、自殺條款滿2年生效。榮民屬健保第四類、第一類眷屬保費上限3口。</div>
+  <div class="entry">商業火險共保80%、住宅火險共保60%;商業用實際價值(扣折舊)、住宅用重置成本(不扣);強制車險死亡200萬、住宅地震150萬。</div>
   <div class="entry">淨零 2050、範疇一+二、「立即生效」是陷阱。</div>
 
 </section>
