@@ -18,6 +18,8 @@
     --blue-bg:#e2eef8;
     --teal:#2E8B6F;
     --teal-bg:#e2f2ec;
+    --amber:#B8791A;
+    --amber-bg:#faf0dc;
     --green:#2E6B4F;
     --green-bg:#e3efe7;
     --card:#FBFAF5;
@@ -56,6 +58,7 @@
   .lg-case{ background:var(--blue-bg); color:var(--blue); }
   .lg-life{ background:var(--teal-bg); color:var(--teal); }
   .lg-tip{ background:var(--pink-bg); color:#7a2851; }
+  .lg-warn{ background:var(--amber-bg); color:var(--amber); }
   .search-row{ display:flex; gap:8px; margin-top:10px; }
   .search-row input{
     flex:1; border:1px solid var(--paper-line); background:var(--card);
@@ -110,6 +113,12 @@
     margin:8px 0 10px 14px; border-radius:0 10px 10px 0; border-left:3px solid var(--teal);
     background:var(--teal-bg); padding:8px 12px;
   }
+  .warn{
+    margin:8px 0 10px 14px; border-radius:0 10px 10px 0; border-left:3px solid var(--amber);
+    background:var(--amber-bg); padding:8px 12px;
+  }
+  .warn .label{ font-size:10.5px; font-weight:800; color:var(--amber); letter-spacing:.02em; margin-bottom:2px; }
+  .warn p{ margin:0; font-size:13.5px; line-height:1.6; color:#7a5410; }
   .life .label{ font-size:10.5px; font-weight:800; color:var(--teal); letter-spacing:.02em; margin-bottom:2px; }
   .life p{ margin:0; font-size:13.5px; line-height:1.6; color:#1f5c46; }
   table.cmp{ width:100%; border-collapse:collapse; margin:10px 0 14px 14px; font-size:13px; background:#fff; border-radius:8px; overflow:hidden; border:1px solid var(--paper-line); }
@@ -145,6 +154,7 @@
     <span class="lg-case">📰 真實案例</span>
     <span class="lg-life">🙋 生活情境</span>
     <span class="lg-tip">🧠 記憶法</span>
+    <span class="lg-warn">⚠️ 常考混淆</span>
   </div>
   <div class="search-row">
     <input id="searchInput" type="text" placeholder="搜尋名詞、記憶法…" autocomplete="off">
@@ -393,6 +403,10 @@
     <div class="entry"><b>共同基金</b>:追<b>相對報酬</b>(打敗 benchmark 標竿);不玩衍生性商品。</div>
     <div class="entry"><b>對沖基金</b>:追<b>絕對報酬</b>;手法=高度槓桿 + 套利 + 積極買賣衍生性商品。</div>
     <div class="tip">🧠 比指數、求相對=共同基金;避險基金反而最敢玩衍生性商品。</div>
+    <div class="warn">
+      <div class="label">⚠️ 常考混淆</div>
+      <p>開放型共同基金是「追逐相對於標竿(benchmark)高的報酬」,不是追逐絕對報酬(那是對沖基金)、不是波動一定低、也不是議價買進(開放型是依當日淨值申購,不能議價)。</p>
+    </div>
 
     <div class="group-head"><h4>績效與風險衡量</h4><span class="relate">🔗 對照⑪風險(系統風險)</span></div>
     <div class="entry"><b>風險貼水</b>:承擔風險額外要求的報酬。</div>
@@ -496,6 +510,10 @@
     <div class="entry"><b>可轉讓定存單(NCD, Negotiable Certificate of Deposit)</b>:一般以 <b>10 萬元</b>為一單位按倍數發行;天期<b>最低 1 個月、最長 1 年</b>;央行版 NCD 面額分三種:500萬/1000萬/1億(沒有100萬)。</div>
     <div class="entry"><b>短期票券利息</b>:扣繳利息所得稅 <b>10%</b>(分離課稅);<b>活期存款利息</b>則要併入綜合所得申報,不是分離課稅。</div>
     <div class="entry">承銷價格算法:國庫券/商業本票/銀行承兌匯票用<b>貼現</b>(打折賣);<b>NCD(可轉讓定存單)不打折</b>,照票面利率算利息。</div>
+    <div class="warn">
+      <div class="label">⚠️ 常考混淆</div>
+      <p>國庫券、可轉讓定存單、銀行承兌匯票<b>都是</b>分離課稅10%;只有<b>活期存款</b>利息要併入綜合所得申報。另外承銷方式:國庫券/商業本票/銀行承兌匯票都用<b>貼現</b>(打折賣);只有 <b>NCD 不打折</b>,是原價買、另外算利息。這兩組題目常把「屬於哪一邊」的票券選錯。</p>
+    </div>
 
     <div class="group-head"><h4>貨幣市場的「錢」怎麼調度</h4><span class="relate">🔗 對照③法規(基本單位換算)</span></div>
     <div class="entry"><b>拆款市場</b>:銀行間彼此互相調度短期資金(常是隔夜),誰錢多借誰、誰缺錢跟誰借。</div>
@@ -596,6 +614,10 @@
       <p>新台幣匯率波動大時,新聞常報導央行是否進場「外匯干預」。</p>
     </div>
     <div class="tip">🧠 外國人想進來/本國變吸引人 → 本幣升值;本國人想往外花錢 → 本幣貶值。</div>
+    <div class="warn">
+      <div class="label">⚠️ 常考混淆</div>
+      <p>「本國相對物價下跌」是讓本幣<b>升值</b>(東西變便宜、外國人搶買);「進口關稅下降」才是讓本幣<b>貶值</b>(大家搶買進口貨、換更多外幣)。兩者容易選反。</p>
+    </div>
 
   </div>
 </details>
@@ -680,6 +702,10 @@
     <div class="group-head"><h4>金融資產證券化</h4><span class="relate">🔗 對照⑫金融商品(現貨/衍生性)</span></div>
     <div class="entry">創始機構把資產(如房貸債權、車貸債權、信用卡債權)<b>移轉、出售</b>給特殊目的機構(SPV),由 <b>SPV 發行</b>有價證券(不是創始機構自己發行)。</div>
     <div class="tip">🧠 創始機構賣資產、SPV 才發證券,別搞反發行主體。</div>
+    <div class="warn">
+      <div class="label">⚠️ 常考混淆</div>
+      <p>「由創始機構發行有價證券」這句是<b>錯的</b>——創始機構只負責把資產賣出去,真正發行證券的是<b>SPV(特殊目的機構)</b>。這題常考「哪句敘述錯誤」,就是設這個陷阱。</p>
+    </div>
     <div class="entry"><b>不動產</b>本身不屬於金融資產證券化條例所指之資產(債權類才算)。</div>
 
   </div>
@@ -739,6 +765,10 @@
 
     <div class="group-head"><h4>保險法大分類</h4><span class="relate">🔗 對照⑮風險保險(可保風險要件)</span></div>
     <div class="entry">保險法分兩大類:<b>財產保險</b>(保東西)、<b>人身保險</b>(保人)。</div>
+    <div class="warn">
+      <div class="label">⚠️ 常考混淆</div>
+      <p>法定用詞是「財產保險與<b>人身</b>保險」,不是「財產保險與<b>人壽</b>保險」。人壽保險只是人身保險底下的一種,範圍太窄,還漏掉健康險、傷害險、年金險。</p>
+    </div>
     <div class="entry"><b>人身保險=定額保險</b>(出事賠固定金額,不管實際損失多少);<b>財產保險=損害填補</b>(賠多少看實際損失)。</div>
     <div class="entry">財產保險特性:事故發生<b>不規則</b>、保額差距大、保險期間<b>通常一年</b>、依賴再保險程度深;人壽保險特性剛好相反(可用生命表算出規則性)。</div>
     <div class="entry">財產保險分類(法定列舉):火災、海上、陸空、責任、保證、其他財產保險——<b>汽車保險是商品名,不是法定分類</b>。</div>
@@ -835,6 +865,10 @@
     </div>
     <div class="entry">基本承保事故:閃電雷擊、爆炸<b>引起之火災</b>(注意是火災本身、不含單純爆炸)、竊盜後縱火。</div>
     <div class="tip">🧠 商業火險扣折舊(讓你不會因為房子舊了就少賠太多但也不會超賠);住宅火險不扣折舊(目的是讓災民真的重建得起)。</div>
+    <div class="warn">
+      <div class="label">⚠️ 常考混淆</div>
+      <p>住宅建築物保額基礎是<b>重置成本</b>(現在重建要花多少錢),<b>不是實際價值</b>(那是扣過折舊的,商業火險才用)。這題常把兩者用錯章節。</p>
+    </div>
 
     <div class="group-head"><h4>海上保險</h4></div>
     <div class="entry"><b>共同海損</b>:為船貨共同安全故意犧牲部分財產(如丟貨減重)→ 屬於<b>部分損失</b>(不是全損,船和其餘貨物都保住了)。</div>
@@ -930,7 +964,7 @@
 
     chapters.forEach(function(d){
       var body = d.querySelector('.chapter-body');
-      var items = Array.prototype.slice.call(body.querySelectorAll('.entry, .tip, .case, .life'));
+      var items = Array.prototype.slice.call(body.querySelectorAll('.entry, .tip, .case, .life, .warn'));
       var chapterMatch = false;
 
       if(q === ''){
